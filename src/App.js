@@ -37,7 +37,9 @@ class App extends Component {
     const min = 1;
     const max = this.state.rudedata.length;
     const rand = Math.round(Math.random() * (max - min) + min);
+    console.log(rand);
     console.log(max);
+    console.log(this.state.rudedata.length);
   }
 
   render() {
