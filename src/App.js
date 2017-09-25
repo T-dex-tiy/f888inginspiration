@@ -35,11 +35,17 @@ class App extends Component {
 
   handleClick() {
     const min = 1;
-    const max = this.state.rudedata.length;
+    const maxend = { ...this.state.rudedata };
+    const max = Object.keys(maxend).length;
     const rand = Math.round(Math.random() * (max - min) + min);
-    console.log(rand);
-    console.log(max);
-    console.log(this.state.rudedata.length);
+    let key = [];
+    key = rand;
+
+    const filtered = Object.keys(maxend).filter(keys => {
+      rand === this.state.rudedata[key];
+      console.log(rand);
+    });
+    console.log(filtered);
   }
 
   render() {
