@@ -11,9 +11,11 @@ class Main extends Component {
   }
 
   render() {
+    const mappedData = Object.keys(this.props.rudedata).map(key => key);
+    console.log(mappedData);
     return (
       <div>
-        <h4>{this.props.rudedata.text}</h4>
+        <h4>{mappedData}</h4>
         <button onClick={this.changeData}>Test</button>
       </div>
     );

@@ -4,6 +4,7 @@ import Rebase from 're-base';
 import './styles/App.css';
 import Footer from './footer.js';
 import Main from './main.js';
+import createReactClass from 'create-react-class';
 
 const app = firebase.initializeApp({
   apiKey: 'AIzaSyDkgAmOpumXz2EYAr8DKIdX4L0vIepQF-s',
@@ -11,7 +12,6 @@ const app = firebase.initializeApp({
   databaseURL: 'https://myf-ingwebsite.firebaseio.com',
   storageBucket: 'myf-ingwebsite.appspot.com'
 });
-
 const base = Rebase.createClass(app.database());
 
 class App extends Component {
@@ -38,30 +38,25 @@ class App extends Component {
     const maxend = { ...this.state.rudedata };
     const max = Object.keys(maxend).length;
     const rand = Math.round(Math.random() * (max - min) + min);
-    let key = [];
-    key = rand;
-
-    const filtered = Object.keys(maxend).filter(keys => {
-      rand === this.state.rudedata[key];
-      console.log(rand);
-    });
-    console.log(filtered);
+    const filtered = Object.keys(maxend).filter(
+      keys => this.state.rudedata.id !== rand
+    );
   }
 
   render() {
+    const orgRude = Object.keys(this.state.rudedata);
+    const mainComponents = orgRude.map(key => {
+      return (
+        <Main
+          key={key}
+          rudedata={this.state.rudedata}
+          handleClick={this.handleClick.bind(this)}
+        />
+      );
+    });
     return (
       <div className="App">
-        <div className="App-main">
-          {Object.keys(this.state.rudedata).map(key => {
-            return (
-              <Main
-                key={key}
-                rudedata={this.state.rudedata[key]}
-                handleClick={this.handleClick.bind(this)}
-              />
-            );
-          })}
-        </div>
+        <div className="App-main">{mainComponents}</div>
         <div className="App-footer">
           <Footer />
         </div>
