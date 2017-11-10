@@ -18,7 +18,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rudedata: {}
+      rudedata: {},
+      text: {}
     };
   }
 
@@ -36,7 +37,7 @@ class App extends Component {
   handleClick() {
     const min = 1;
     const maxend = { ...this.state.rudedata };
-    const max = Object.keys(maxend).length;
+    const max = Object.keys(maxend);
     const rand = Math.round(Math.random() * (max - min) + min);
     const filtered = Object.keys(maxend).filter(
       keys => this.state.rudedata.id !== rand
@@ -44,16 +45,22 @@ class App extends Component {
   }
 
   render() {
-    const orgRude = Object.keys(this.state.rudedata);
+    const orgRude = Object.keys(this.state.rudedata).map(key => {
+      const newRude = this.state.rudedata[key];
+      console.log(newRude.text, 'nR');
+      return newRude;
+    });
+    console.log(orgRude, 'orgRude');
     const mainComponents = orgRude.map(key => {
       return (
         <Main
           key={key}
-          rudedata={this.state.rudedata}
+          rudedata={orgRude}
           handleClick={this.handleClick.bind(this)}
         />
       );
     });
+    console.log(mainComponents);
     return (
       <div className="App">
         <div className="App-main">{mainComponents}</div>
