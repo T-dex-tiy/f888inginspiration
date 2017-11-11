@@ -13,13 +13,12 @@ const app = firebase.initializeApp({
   storageBucket: 'myf-ingwebsite.appspot.com'
 });
 const base = Rebase.createClass(app.database());
-
+let newKey = '';
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rudedata: {},
-      text: {}
+      rudedata: {}
     };
   }
 
@@ -35,35 +34,29 @@ class App extends Component {
   }
 
   handleClick() {
-    const min = 1;
+    const min = 0;
     const maxend = { ...this.state.rudedata };
-    const max = Object.keys(maxend);
-    const rand = Math.round(Math.random() * (max - min) + min);
-    const filtered = Object.keys(maxend).filter(
-      keys => this.state.rudedata.id !== rand
-    );
+    const max = Object.keys(maxend).length;
+    const rand = Math.round(Math.random() * max - min);
+    newKey = rand;
   }
 
   render() {
+    let handlerData = '';
     const orgRude = Object.keys(this.state.rudedata).map(key => {
       const newRude = this.state.rudedata[key];
+      handlerData = newRude.text;
       console.log(newRude.text, 'nR');
-      return newRude;
+      return handlerData;
     });
     console.log(orgRude, 'orgRude');
-    const mainComponents = orgRude.map(key => {
-      return (
-        <Main
-          key={key}
-          rudedata={orgRude}
-          handleClick={this.handleClick.bind(this)}
-        />
-      );
-    });
-    console.log(mainComponents);
+    console.log(handlerData);
+
     return (
       <div className="App">
-        <div className="App-main">{mainComponents}</div>
+        <div className="App-main">
+          <Main rudedata={orgRude} handleClick={this.handleClick.bind(this)} />
+        </div>
         <div className="App-footer">
           <Footer />
         </div>

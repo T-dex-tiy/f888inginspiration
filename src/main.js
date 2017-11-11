@@ -11,9 +11,12 @@ class Main extends Component {
   }
 
   render() {
+    const min = 0;
+    const maxend = { ...this.props.rudedata };
+    const max = Object.keys(maxend).length;
     return (
       <div>
-        <h4>{this.props.rudedata}</h4>
+        <h4>{this.props.rudedata[Math.round(Math.random() * max - min)]}</h4>
         <button onClick={this.changeData}>Test</button>
       </div>
     );
