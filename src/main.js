@@ -10,15 +10,13 @@ class Main extends Component {
     };
     this.changeData = this.changeData.bind(this);
   }
+
   changeData(event) {
-    console.log('weee');
     const min = 0;
     const maxend = { ...this.props.rudedata };
     const max = Object.keys(maxend).length;
     randIndex = Math.round(Math.random() * max - min);
     giverHell = this.props.rudedata[randIndex];
-    console.log(this.props.rudedata[randIndex]);
-    console.log(giverHell);
     this.setState({ display: giverHell });
   }
 
