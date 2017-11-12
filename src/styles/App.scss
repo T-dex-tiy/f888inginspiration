@@ -2,13 +2,42 @@
   font-family: homegrown;
   src: url('./font/homegrown.ttf');
 }
-
+#root {
+  display: flex;
+}
 body {
   font-family: homegrown;
 }
 
+.App-main {
+  display: flex;
+  justify-content: center;
+  background: url('../backgrounds/starrynight.jpg')no-repeat center center;
+  align-items: center;
+  width: 100vw;
+  height: 90vh;
+  overflow: hidden;
+}
+.mainDisplay {
+  text-align: center;
+}
+.content {
+  font-size: 4em;
+  color: white;
+}
+.btn {
+  background: lightgrey;
+  color: black;
+  border: 1px solid black;
+  opacity: 0.6;
+  font-size: 14px;
+  font-size: 2.5em;
+  font-family: homegrown;
+  border-radius: 5em;
+}
 .App-footer {
   display: flex;
+  text-align: center;
   align-items: flex-end;
   justify-content: flex-end;
   background: black;

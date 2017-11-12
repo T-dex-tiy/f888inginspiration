@@ -44,7 +44,11 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-main">
-          <Main rudedata={orgRude} display={this.state.display} />
+          <Main
+            className="txtDisplay"
+            rudedata={orgRude}
+            display={this.state.display}
+          />
         </div>
         <div className="App-footer">
           <Footer />

@@ -27,9 +27,11 @@ class Main extends Component {
     const max = Object.keys(maxend).length;
     randIndex = Math.round(Math.random() * max - min);
     return (
-      <div>
-        <h4 className="content">{this.state.display}</h4>
-        <button onClick={this.changeData}>Language people...</button>
+      <div className="mainDisplay">
+        <p className="content">{this.state.display}</p>
+        <button className="btn" onClick={this.changeData}>
+          Language people...
+        </button>
       </div>
     );
   }
