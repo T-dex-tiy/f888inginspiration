@@ -10,7 +10,7 @@ class Footer extends Component {
       <div>
         <div>
           <a href="https://www.goodfuckigndesignadvice.com">
-            Good Fucking design Advice
+            Good F*** design Advice
           </a>
         </div>
         <div>

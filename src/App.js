@@ -33,6 +33,13 @@ class App extends Component {
     base.removeBinding(this.ref);
   }
 
+changeDisplay(giverHell){
+  let dis=""
+  if(giverHell.includes('fuck')){
+    dis=giverHell.replace("fuck", "f***")
+  }
+  this.setState({ display: dis });
+}
   render() {
     let handlerData = '';
     const orgRude = Object.keys(this.state.rudedata).map(key => {
@@ -47,6 +54,7 @@ class App extends Component {
           <Main
             className="txtDisplay"
             rudedata={orgRude}
+            changeDisplay={this.changeDisplay.bind(this)}
             display={this.state.display}
           />
         </div>

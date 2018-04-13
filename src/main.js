@@ -5,9 +5,6 @@ let giverHell = '';
 class Main extends Component {
   constructor() {
     super();
-    this.state = {
-      display: 'Click to get some fucking inspiration'
-    };
     this.changeData = this.changeData.bind(this);
   }
 
@@ -16,8 +13,8 @@ class Main extends Component {
     const maxend = { ...this.props.rudedata };
     const max = Object.keys(maxend).length;
     randIndex = Math.round(Math.random() * max - min);
-    giverHell = this.props.rudedata[randIndex];
-    this.setState({ display: giverHell });
+    let giverHell = this.props.rudedata[randIndex];
+    this.props.changeDisplay(giverHell)
   }
 
   render() {
@@ -28,7 +25,7 @@ class Main extends Component {
     randIndex = Math.round(Math.random() * max - min);
     return (
       <div className="mainDisplay">
-        <p className="content">{this.state.display}</p>
+        <p className="content">{this.props.display}</p>
         <button className="btn" onClick={this.changeData}>
           Language people...
         </button>
